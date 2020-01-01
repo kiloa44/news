@@ -7,7 +7,7 @@ class Home {
         <div>
             <h2>Home</h2>
             {/* <Login></Login> */}
-            <Signup></Signup>
+            {/* <Signup></Signup> */}
         </div>
         );
     }

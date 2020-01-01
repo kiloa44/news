@@ -1,66 +1,50 @@
 import React, { Component } from "react";
-import AppBar from "@material-ui/core/AppBar/AppBar";
-import Button from "@material-ui/core/Button/Button";
-import TextField from "@material-ui/core/TextField/TextField";
-class Signup extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      first_name: "",
-      last_name: "",
-      email: "",
-      password: ""
-    };
-  }
+
+export default class SignUp extends Component {
   render() {
     return (
-      <div>
-          <div>
-            <AppBar title="Register" />
-            <TextField
-              hintText="Enter your First Name"
-              floatingLabelText="First Name"
-              onChange={(event, newValue) =>
-                this.setState({ first_name: newValue })
-              }
-            />
-            <br />
-            <TextField
-              hintText="Enter your Last Name"
-              floatingLabelText="Last Name"
-              onChange={(event, newValue) =>
-                this.setState({ last_name: newValue })
-              }
-            />
-            <br />
-            <TextField
-              hintText="Enter your Email"
-              type="email"
-              floatingLabelText="Email"
-              onChange={(event, newValue) => this.setState({ email: newValue })}
-            />
-            <br />
-            <TextField
-              type="password"
-              hintText="Enter your Password"
-              floatingLabelText="Password"
-              onChange={(event, newValue) =>
-                this.setState({ password: newValue })
-              }
-            />
-            <br />
-            <Button
-              label="Submit"
-              primary={true}
-              style={style}
-              onClick={event => this.handleClick(event)}
-            />
-          </div>
-      </div>
+      <form>
+        <h3>Sign Up</h3>
+
+        <div className="form-group">
+          <label>First name</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="First name"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Last name</label>
+          <input type="text" className="form-control" placeholder="Last name" />
+        </div>
+
+        <div className="form-group">
+          <label>Email address</label>
+          <input
+            type="email"
+            className="form-control"
+            placeholder="Enter email"
+          />
+        </div>
+
+        <div className="form-group">
+          <label>Password</label>
+          <input
+            type="password"
+            className="form-control"
+            placeholder="Enter password"
+          />
+        </div>
+
+        <button type="submit" className="btn btn-primary btn-block">
+          Sign Up
+        </button>
+        <p className="forgot-password text-right">
+          Already registered <a href="#">sign in?</a>
+        </p>
+      </form>
     );
   }
 }
-const style = {
-  margin: 15
-};
-export default Signup;
