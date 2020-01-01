@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import AppBar from "material-ui/AppBar";
-import RaisedButton from "material-ui/RaisedButton";
-import TextField from "material-ui/TextField";
+import AppBar from "@material-ui/core/AppBar/AppBar";
+import Button from "@material-ui/core/Button/Button";
+import TextField from "@material-ui/core/TextField/TextField";
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +15,6 @@ class Signup extends Component {
   render() {
     return (
       <div>
-        <MuiThemeProvider>
           <div>
             <AppBar title="Register" />
             <TextField
@@ -51,14 +49,13 @@ class Signup extends Component {
               }
             />
             <br />
-            <RaisedButton
+            <Button
               label="Submit"
               primary={true}
               style={style}
               onClick={event => this.handleClick(event)}
             />
           </div>
-        </MuiThemeProvider>
       </div>
     );
   }
@@ -66,4 +63,4 @@ class Signup extends Component {
 const style = {
   margin: 15
 };
-export default Register;
+export default Signup;
