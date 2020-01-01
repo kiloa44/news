@@ -1,8 +1,15 @@
 import React from 'react';
-export default function Home() {
-    return (
-      <div>
-        <h2>Home</h2>
-      </div>
-    );
+import Login from './login';
+import Signup from './signup';
+class Home {
+    render(){
+        return (
+        <div>
+            <h2>Home</h2>
+            <Login></Login>
+            <Signup></Signup>
+        </div>
+        );
+    }
   }
+export default  Home;
