@@ -1,6 +1,22 @@
 import React, { Component } from "react";
+import * as firebase from 'firebase'
 
 export default class Login extends Component {
+  state={
+    email:'',
+    password:''
+  }
+  addUser=()=>{
+    let {email,password} = this.state;
+    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      console.log(errorCode,errorMessage);
+
+      // ...
+    });
+  }
   render() {
     return (
       <form>
@@ -12,6 +28,8 @@ export default class Login extends Component {
             type="email"
             className="form-control"
             placeholder="Enter email"
+            value={this.state.email}
+            onChange={event => this.setState({ email: event.target.value })}
           />
         </div>
 
@@ -21,6 +39,8 @@ export default class Login extends Component {
             type="password"
             className="form-control"
             placeholder="Enter password"
+            value={this.state.password}
+            onChange={event => this.setState({ password: event.target.value })}
           />
         </div>
 
@@ -37,12 +57,10 @@ export default class Login extends Component {
           </div>
         </div>
 
-        <button type="submit" className="btn btn-primary btn-block">
+        <button type="submit" className="btn btn-primary btn-block" onClick={this.addUser}>
           Submit
         </button>
-        <p className="forgot-password text-right">
-          Forgot <a href="#">password?</a>
-        </p>
+        
       </form>
     );
   }

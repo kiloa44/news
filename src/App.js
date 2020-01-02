@@ -33,8 +33,8 @@ function App() {
           </div>
         </nav>
 
-        <div className="auth-wrapper">
-          <div className="auth-inner">
+        <div className="auth-wrapper" style={{marginTop:55}}>
+          <div className="auth-inner" >
             <Switch>
               <Route exact path="/" component={Login} />
               <Route path="/login" component={Login} />
