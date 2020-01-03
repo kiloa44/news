@@ -10,10 +10,10 @@ class Home extends Component{
         title:'',
         subtitle:''
     };
-    componentWillMount(){
-        let data =  getApiData();
-        console.log(data);
-        this.setState({
+
+     async componentDidMount(){
+       const data = await getApiData();
+     this.setState({
             img_src:data.url,
             title:data.title,
             text:data.explanation
@@ -21,6 +21,7 @@ class Home extends Component{
     }
 
     render(){
+        console.log(this.state.img_src)
         return (
         <div className="">
             
