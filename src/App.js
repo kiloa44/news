@@ -13,7 +13,7 @@ function App() {
       <div className="App">
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to={"/login"}>
+            <Link className="navbar-brand" to={"/"}>
               YourNews
             </Link>
             <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
@@ -32,15 +32,18 @@ function App() {
             </div>
           </div>
         </nav>
+        <div style={{ marginTop: 55 }}>
 
-        <div className="auth-wrapper" style={{marginTop:55}}>
-          <div className="auth-inner" >
-            <Switch>
-              <Route exact path="/" component={Login} />
+        <Switch>
+          <Route exact path="/" component={Home} />
+
+          <div className="auth-wrapper" style={{ marginTop: 55 }}>
+            <div className="auth-inner">
               <Route path="/login" component={Login} />
               <Route path="/sign-up" component={SignUp} />
-            </Switch>
+            </div>
           </div>
+        </Switch>
         </div>
       </div>
     </BrowserRouter>
