@@ -8,31 +8,38 @@ import {
   CardSubtitle,
   Button
 } from "reactstrap";
+import { getApiData } from './api';
 
 class Post extends Component {
   render() {
     return (
       <div>
-        <Card>
-          <CardImg
-            top
-            width="100%"
-            src="/assets/318x180.svg"
-            alt="Card image cap"
-          />
+        <Card style={styles.cardStyle}>
+          <CardImg top width="100%" src={this.props.img_src} alt="Card image cap" />
           <CardBody>
-            <CardTitle>Card title</CardTitle>
-            <CardSubtitle>Card subtitle</CardSubtitle>
-            <CardText>
-              Some quick example text to build on the card title and make up the
-              bulk of the card's content.
+            <CardTitle>{this.props.title}</CardTitle>
+            <CardSubtitle>{this.props.subtitle}</CardSubtitle>
+            <CardText style={styles.cardText}>
+              {this.props.text}
             </CardText>
-            <Button>Button</Button>
+            <Button onClick={getApiData}>Button</Button>
           </CardBody>
         </Card>
       </div>
     );
   }
 }
+
+const styles = {
+  cardText: {
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
+    width: 350
+  },
+  cardStyle:{
+    marginBottom:20
+  }
+};
 
 export default Post;

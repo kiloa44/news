@@ -33,17 +33,16 @@ function App() {
           </div>
         </nav>
         <div style={{ marginTop: 55 }}>
+          <Switch>
+            <Route exact path="/" component={Home} />
 
-        <Switch>
-          <Route exact path="/" component={Home} />
-
-          <div className="auth-wrapper" style={{ marginTop: 55 }}>
-            <div className="auth-inner">
-              <Route path="/login" component={Login} />
-              <Route path="/sign-up" component={SignUp} />
+            <div className="auth-wrapper" style={{ marginTop: 55 }}>
+              <div className="auth-inner">
+                <Route path="/login" component={Login} />
+                <Route path="/sign-up" component={SignUp} />
+              </div>
             </div>
-          </div>
-        </Switch>
+          </Switch>
         </div>
       </div>
     </BrowserRouter>

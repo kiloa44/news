@@ -12,7 +12,7 @@ export default class SignUp extends Component {
 
   signUpUser = () => {
     alert("in signupuser");
-    if (this.state.password.length > 7 && this.state.email != "") {
+    if (this.state.password.length > 7 && this.state.email !== "") {
       let { email, password, first_name, last_name, age } = this.state;
       firebase
         .auth()
@@ -21,6 +21,7 @@ export default class SignUp extends Component {
           // Handle Errors here.
           var errorCode = error.code;
           var errorMessage = error.message;
+          console.log(errorCode,errorMessage);
           // ...
         })
         .then(function() {
