@@ -17,8 +17,7 @@ class Post extends Component {
         <Card style={styles.cardStyle} >
           <CardImg style={styles.cardImage} src={this.props.img_src} alt="Card image cap" />
           <CardBody>
-            <CardTitle>{this.props.title}</CardTitle>
-            <CardSubtitle>{this.props.subtitle}</CardSubtitle>
+            <CardTitle style={styles.titleText} >  {this.props.title}</CardTitle>
           </CardBody>
         </Card>
       </a>
@@ -27,18 +26,18 @@ class Post extends Component {
 }
 
 const styles = {
-  cardText: {
-    overflow: "hidden",
-    whiteSpace: "nowrap",
-    textOverflow: "ellipsis",
-    width: 350
+   
+  titleText: {
+    width: 340,
+    fontSize: 17,
+    color: "red",
   },
   cardStyle:{
     marginBottom:20
   },
   cardImage:{
-    height:140,
-    width:210,
+    height:251,
+    width:400,
   }
 };
 

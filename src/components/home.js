@@ -7,6 +7,7 @@ class Home extends Component {
   state = {
     articles:[]
   };
+      
 
   async componentDidMount() {
     let nytimes = await getApiData('https://api.nytimes.com/svc/topstories/v2/science.json?api-key=tdAbmOB482lwbw4drHWjHDlte0MgG5vq');
@@ -26,7 +27,6 @@ class Home extends Component {
         this.setState({articles:articles});
     });
   }
-
   render() {
     console.log(this.state.img_src);
     return (
@@ -37,7 +37,6 @@ class Home extends Component {
             img_src={article.img_src}
             url={article.url}
             title={article.title}
-            subtitle={article.subtitle}
           ></Post>
           })}
           
