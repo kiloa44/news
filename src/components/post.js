@@ -36,7 +36,7 @@ const styles = {
     marginBottom:20
   },
   cardImage:{
-    height:250,
+    height:251,
     width:400,
   }
 };

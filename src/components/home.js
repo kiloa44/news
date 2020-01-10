@@ -12,8 +12,8 @@ class Home extends Component {
   async componentDidMount() {
     let nytimes = await getApiData('https://api.nytimes.com/svc/topstories/v2/science.json?api-key=tdAbmOB482lwbw4drHWjHDlte0MgG5vq');
     nytimes.results.forEach((article)=>{
+      let url = article.url;
         let title = article.title;
-        let url = article.url;
         let subtitle = article.abstract;
         let image_url = article.multimedia["3"].url;
         
