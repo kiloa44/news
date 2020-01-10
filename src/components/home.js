@@ -14,8 +14,8 @@ class Home extends Component {
       let url = article.url;
         let title = article.title;
         let subtitle = article.abstract;
-        let image_url = article.multimedia["3"].url;
-        
+        let image_url = article.multimidea;
+        console.log(article.multimidea);
         let {articles} = this.state;
         articles.push({
           img_src:image_url,
