@@ -13,6 +13,7 @@ class Home extends Component{
 
      async componentDidMount(){
        const data = await getApiData();
+       console.log(data ,"data")
      this.setState({
             img_src:data.url,
             title:data.title,
