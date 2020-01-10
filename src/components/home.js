@@ -5,18 +5,25 @@ import { getApiData } from "./api";
 
 class Home extends Component {
   state = {
-    img_src: "",
-    text: "",
-    title: "",
-    subtitle: ""
+    articles:[]
   };
 
   async componentDidMount() {
-    const data = await getApiData();
-    this.setState({
-      img_src: data.url,
-      title: data.title,
-      text: data.explanation
+    let nytimes = await getApiData('https://api.nytimes.com/svc/topstories/v2/science.json?api-key=tdAbmOB482lwbw4drHWjHDlte0MgG5vq');
+    nytimes.results.forEach((article)=>{
+        let title = article.title;
+        let url = article.url;
+        let subtitle = article.abstract;
+        let image_url = article.multimedia["3"].url;
+        
+        let {articles} = this.state;
+        articles.push({
+          img_src:image_url,
+          title:title,
+          subtitle:subtitle,
+          url:url
+        });
+        this.setState({articles:articles});
     });
   }
 
@@ -25,12 +32,15 @@ class Home extends Component {
     return (
       <div className="">
         <CardDeck style={styles.cardDeck}>
-          <Post
-            img_src={this.state.img_src}
-            text={this.state.text}
-            title={this.state.title}
-            subtitle={this.state.subtitle}
+          {this.state.articles.map(article =>{
+            return <Post
+            img_src={article.img_src}
+            url={article.url}
+            title={article.title}
+            subtitle={article.subtitle}
           ></Post>
+          })}
+          
         </CardDeck>
       </div>
     );
