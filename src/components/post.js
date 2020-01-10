@@ -13,32 +13,31 @@ import { getApiData } from './api';
 class Post extends Component {
   render() {
     return (
-      <div>
-        <Card style={styles.cardStyle}>
-          <CardImg top width="100%" src={this.props.img_src} alt="Card image cap" />
+      <a href={this.props.url}>
+        <Card style={styles.cardStyle} >
+          <CardImg style={styles.cardImage} src={this.props.img_src} alt="Card image cap" />
           <CardBody>
-            <CardTitle>{this.props.title}</CardTitle>
-            <CardSubtitle>{this.props.subtitle}</CardSubtitle>
-            <CardText style={styles.cardText}>
-              {this.props.text}
-            </CardText>
-            <Button onClick={getApiData}>Button</Button>
+            <CardTitle style={styles.titleText} >  {this.props.title}</CardTitle>
           </CardBody>
         </Card>
-      </div>
+      </a>
     );
   }
 }
 
 const styles = {
-  cardText: {
-    overflow: "hidden",
-    whiteSpace: "nowrap",
-    textOverflow: "ellipsis",
-    width: 350
+   
+  titleText: {
+    width: 340,
+    fontSize: 17,
+    color: "red",
   },
   cardStyle:{
     marginBottom:20
+  },
+  cardImage:{
+    height:250,
+    width:400,
   }
 };
 
