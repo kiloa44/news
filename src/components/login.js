@@ -6,15 +6,20 @@ export default class Login extends Component {
     email:'',
     password:''
   }
-  addUser=()=>{
+  login=()=>{
+    console.log('in login');
     let {email,password} = this.state;
     firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
+      alert('hello');
       console.log(errorCode,errorMessage);
 
       // ...
+    }).then((res)=>{
+      console.log(res);
+      console.log('login worked')
     });
   }
   render() {
@@ -56,11 +61,13 @@ export default class Login extends Component {
             </label>
           </div>
         </div>
-
-        <button type="submit" className="btn btn-primary btn-block" onClick={this.addUser}>
-          Submit
-        </button>
-        
+        <a
+          className="btn btn-primary btn-block white"
+          onClick={this.login}
+          style={{ fontSize: 18 }}
+        >
+          Send
+        </a>
       </form>
     );
   }

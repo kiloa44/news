@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import * as firebase from "firebase";
+import { ButtonToolbar } from "react-bootstrap";
+import  ChooseButton  from "./choose_buttons";
 
 export default class SignUp extends Component {
   state = {
@@ -7,13 +9,30 @@ export default class SignUp extends Component {
     password: "",
     first_name: "",
     last_name: "",
-    age: ""
+    age: "",
+    interests:[
+      'Science','Art','Politics','Technology','Business', 'Fashion', 'Food', 'Health'
+    ],
+    user_interests:[]
   };
+
+  handlePress = (e) =>{
+    
+    let {user_interests} = this.state;
+    let value = e.target.value;
+    if(!user_interests.includes(value)){
+      user_interests.push(value);
+    }
+    this.setState({
+      user_interests:user_interests
+    });
+    console.log(user_interests)
+  }
 
   signUpUser = () => {
     alert("in signupuser");
     if (this.state.password.length > 7 && this.state.email !== "") {
-      let { email, password, first_name, last_name, age } = this.state;
+      let { email, password, first_name, last_name, age , user_interests } = this.state;
       firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
@@ -21,20 +40,23 @@ export default class SignUp extends Component {
           // Handle Errors here.
           var errorCode = error.code;
           var errorMessage = error.message;
-          console.log(errorCode,errorMessage);
+          console.log(errorCode, errorMessage);
           // ...
         })
         .then(function() {
           const db = firebase.firestore();
+          console.log("email",typeof(email));
           alert("in then");
           db.collection("users")
-            .add({
+          .doc(email)
+            .set({
               first_name: first_name,
               last_name: last_name,
-              age: age
+              age: age,
+              user_interests:user_interests
             })
             .then(function(docRef) {
-              console.log("Document written with ID: ", docRef.id);
+              console.log("Document written with ID: ", docRef);
             })
             .catch(function(error) {
               console.error("Error adding document: ", error);
@@ -44,6 +66,7 @@ export default class SignUp extends Component {
   };
 
   render() {
+    let {interests} = this.state;
     return (
       <form>
         <h3>Sign Up</h3>
@@ -103,10 +126,26 @@ export default class SignUp extends Component {
             onChange={event => this.setState({ password: event.target.value })}
           />
         </div>
-        <a className="btn btn-primary btn-block white" 
-        onClick={this.signUpUser}
-        style={{fontSize:18}}
-        >Send
+        <div className="form-group">
+          <ButtonToolbar aria-label="Toolbar with button groups">
+            {
+              interests.map((element)=>{
+                return(<ChooseButton 
+                  text={element}
+                   value={element.toLowerCase()}
+                    onClick={this.handlePress}>
+                    </ChooseButton>)
+              })
+            }
+          </ButtonToolbar>
+        </div>
+
+        <a
+          className="btn btn-primary btn-block white"
+          onClick={this.signUpUser}
+          style={{ fontSize: 18 }}
+        >
+          Send
         </a>
         <p className="forgot-password text-right">
           Already registered <a href="#">sign in?</a>
