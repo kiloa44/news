@@ -15,7 +15,7 @@ class Post extends Component {
     return (
       <div>
         <Card style={styles.cardStyle}>
-          <CardImg top width="100%" src={this.props.img_src} alt="Card image cap" />
+          <CardImg style={styles.cardImage} src={this.props.img_src} alt="Card image cap" />
           <CardBody>
             <CardTitle>{this.props.title}</CardTitle>
             <CardSubtitle>{this.props.subtitle}</CardSubtitle>
@@ -39,6 +39,9 @@ const styles = {
   },
   cardStyle:{
     marginBottom:20
+  },
+  cardImage:{
+    width:400,
   }
 };
 
