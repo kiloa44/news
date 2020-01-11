@@ -58,6 +58,8 @@ export default class SignUp extends Component {
             })
             .then(function(docRef) {
               console.log("Document written with ID: ", docRef);
+              this.props.history.push("/");
+
             })
             .catch(function(error) {
               console.error("Error adding document: ", error);
