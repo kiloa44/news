@@ -9,12 +9,13 @@ import {
   Button
 } from "reactstrap";
 import { getApiData } from './api';
+import "./styling.css"
 
 class Post extends Component {
   render() {
     return (
       <a href={this.props.url}>
-        <Card style={styles.cardStyle} >
+        <Card style={styles.cardStyle} className="card_style "  >
           <CardImg style={styles.cardImage} src={this.props.img_src} alt="Card image cap" />
           <CardBody>
             <CardTitle style={styles.titleText} >  {this.props.title}</CardTitle>
@@ -32,9 +33,6 @@ const styles = {
     fontSize: 17,
     color: "red",
   },
-  cardStyle:{
-    marginBottom:20
-  },
   cardImage:{
     height:251,
     width:400,
@@ -42,3 +40,8 @@ const styles = {
 };
 
 export default Post;
+
+
+
+  
+

@@ -22,6 +22,7 @@ export default class SignUp extends Component {
     let value = e.target.value;
     if(!user_interests.includes(value)){
       user_interests.push(value);
+      e.target.style.backgroundColor = 'red';
     }
     this.setState({
       user_interests:user_interests
