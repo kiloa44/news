@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import * as firebase from 'firebase'
+import { Redirect } from "react-router-dom";
+
 
 export default class Login extends Component {
   state={
@@ -20,6 +22,8 @@ export default class Login extends Component {
     }).then((res)=>{
       console.log(res);
       console.log('login worked')
+      window.location.href.
+      return ( <Redirect to='/'/>)
     });
   }
   render() {
