@@ -73,7 +73,7 @@ class Home extends Component {
         articles.push({
           img_src: img_src,
           title: title,
-          subtitle: subtitle,
+          subtitle: subtitle, 
           url: url
         });
         this.setState({ articles: articles });
