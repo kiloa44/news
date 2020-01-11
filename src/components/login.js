@@ -22,7 +22,7 @@ export default class Login extends Component {
     }).then((res)=>{
       console.log(res);
       console.log('login worked')
-      window.location.href.
+      window.location.href = '/';
       return ( <Redirect to='/'/>)
     });
   }

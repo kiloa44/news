@@ -24,12 +24,14 @@ class Home extends Component {
             console.log("  User UID : " + user.uid);
           });
         }
+        console.log(user.email)
         firebase
           .firestore()
           .collection("users")
           .doc(user.email)
           .get()
           .then(doc => {
+            console.log(doc)
             if (doc.exists) {
               console.log(doc.data().user_interests);
               this.setState({ user_interests: doc.data().user_interests });
