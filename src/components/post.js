@@ -15,10 +15,10 @@ class Post extends Component {
   render() {
     return (
       <a href={this.props.url}>
-        <Card style={styles.cardStyle} className="card_style "  >
-          <CardImg style={styles.cardImage} src={this.props.img_src} alt="Card image cap" />
+        <Card  className="card_style "  >
+          <CardImg className='imagestyle' src={this.props.img_src} alt="Card image cap" />
           <CardBody>
-            <CardTitle style={styles.titleText} >  {this.props.title}</CardTitle>
+            <CardTitle className='txtboxes' >  {this.props.title}</CardTitle >
           </CardBody>
         </Card>
       </a>
@@ -26,18 +26,7 @@ class Post extends Component {
   }
 }
 
-const styles = {
-   
-  titleText: {
-    width: 340,
-    fontSize: 17,
-    color: "red",
-  },
-  cardImage:{
-    height:251,
-    width:400,
-  }
-};
+
 
 export default Post;
 

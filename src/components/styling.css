@@ -1,3 +1,19 @@
 .card_style {
     margin-bottom: 30px;
+    border-radius: 30px;
+    color: red;
 }
+
+
+
+.txtboxes {
+    width: 340px;
+    font-size: 17px;
+    color: "red";
+  }
+
+
+.imagestyle {
+    height:251;
+    width:400;
+      }
