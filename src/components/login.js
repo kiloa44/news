@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component , useContext } from "react";
 import * as firebase from "firebase";
-import { Redirect } from "react-router-dom";
+import { withRouter, Redirect } from "react-router";
+import { AuthContext } from "./Auth.js";
 
 export default class Login extends Component {
   state = {
@@ -24,11 +25,15 @@ export default class Login extends Component {
       })
       .then(res => {
         console.log(res);
-
         this.props.history.push("/");
       });
   };
   render() {
+    const { currentUser } = useContext(AuthContext);
+console.log(currentUser);
+    if (currentUser) {
+      return <Redirect to="/" />;
+    }
     return (
       <form>
         <h3>Login</h3>

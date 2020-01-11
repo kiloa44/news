@@ -6,6 +6,7 @@ import Login from "./components/login";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import * as firebase from "firebase";
 
 function App() {
   return (
