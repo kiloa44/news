@@ -22,7 +22,7 @@ body {
   display: flex;
   font-weight: 400;
   font-family: 'Fira Sans', sans-serif;
-  background-image: url('./assests/569164.jpg');
+  background-image: url('./assests/569164.jpg') !important; 
 }
 
 h1,h2,h3,h4,h5,h6,label,span {

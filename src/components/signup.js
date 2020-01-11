@@ -44,12 +44,13 @@ export default class SignUp extends Component {
           console.log(errorCode, errorMessage);
           // ...
         })
-        .then(function() {
+        .then(function(res) {
+          
           const db = firebase.firestore();
           console.log("email",typeof(email));
           alert("in then");
           db.collection("users")
-          .doc(email)
+          .doc(res.user.uid)
             .set({
               first_name: first_name,
               last_name: last_name,
