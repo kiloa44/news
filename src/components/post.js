@@ -14,6 +14,8 @@ import "./styling.css";
 class Post extends Component {
   render() {
     return (
+
+
       <div className="card-container">
         <Card className="card_style">
           <CardImg
@@ -21,9 +23,9 @@ class Post extends Component {
             src={this.props.img_src}
             alt="Card image cap"
           />
+
           <CardBody>
             <CardTitle className="txtboxes">
-              {" "}
               <a href={this.props.url}>{this.props.title}</a>
             </CardTitle>
           </CardBody>
