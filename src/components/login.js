@@ -1,31 +1,33 @@
 import React, { Component } from "react";
-import * as firebase from 'firebase'
+import * as firebase from "firebase";
 import { Redirect } from "react-router-dom";
 
-
 export default class Login extends Component {
-  state={
-    email:'',
-    password:''
-  }
-  login=()=>{
-    console.log('in login');
-    let {email,password} = this.state;
-    firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      alert('hello');
-      console.log(errorCode,errorMessage);
+  state = {
+    email: "",
+    password: ""
+  };
+  login = () => {
+    console.log("in login");
+    let { email, password } = this.state;
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        alert("hello");
+        console.log(errorCode, errorMessage);
 
-      // ...
-    }).then((res)=>{
-      console.log(res);
-      console.log('login worked')
-      window.location.href = '/';
-      return ( <Redirect to='/'/>)
-    });
-  }
+        // ...
+      })
+      .then(res => {
+        console.log(res);
+
+        this.props.history.push("/");
+      });
+  };
   render() {
     return (
       <form>
