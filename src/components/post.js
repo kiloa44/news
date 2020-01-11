@@ -15,6 +15,7 @@ class Post extends Component {
   render() {
     return (
       <a href={this.props.url}>
+
         <Card  className="card_style "  >
           <CardImg className='imagestyle' src={this.props.img_src} alt="Card image cap" />
           <CardBody>
