@@ -16,4 +16,11 @@
 .imagestyle {
     height:251;
     width:400;
-      }
+  }
+
+.card-container{
+  width: 400px;
+  height: 400px;
+}
+
+

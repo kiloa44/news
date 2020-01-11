@@ -8,29 +8,29 @@ import {
   CardSubtitle,
   Button
 } from "reactstrap";
-import { getApiData } from './api';
-import "./styling.css"
+import { getApiData } from "./api";
+import "./styling.css";
 
 class Post extends Component {
   render() {
     return (
-      <a href={this.props.url}>
-        <Card  className="card_style "  >
-          <CardImg className='imagestyle' src={this.props.img_src} alt="Card image cap" />
+      <div className="card-container">
+        <Card className="card_style">
+          <CardImg
+            className="imagestyle"
+            src={this.props.img_src}
+            alt="Card image cap"
+          />
           <CardBody>
-            <CardTitle className='txtboxes' >  {this.props.title}</CardTitle >
+            <CardTitle className="txtboxes">
+              {" "}
+              <a href={this.props.url}>{this.props.title}</a>
+            </CardTitle>
           </CardBody>
         </Card>
-      </a>
+      </div>
     );
   }
 }
 
-
-
 export default Post;
-
-
-
-  
-

@@ -5,6 +5,7 @@ import { getApiData } from "./api";
 import * as firebase from "firebase";
 import { Redirect } from "react-router-dom";
 
+import missingImage from "../assests/Missing.jpg"; // with import
 class Home extends Component {
   state = {
     articles: [],
@@ -24,18 +25,18 @@ class Home extends Component {
             console.log("  User UID : " + user.uid);
           });
         }
-        console.log(user.email)
+        console.log(user.email);
         firebase
           .firestore()
           .collection("users")
           .doc(user.email)
           .get()
           .then(doc => {
-            console.log(doc)
+            console.log(doc);
             if (doc.exists) {
               console.log(doc.data().user_interests);
               this.setState({ user_interests: doc.data().user_interests });
-              this.getAllApis()
+              this.getAllApis();
             }
           });
         console.log("user logged");
@@ -46,8 +47,8 @@ class Home extends Component {
   }
 
   getAllApis = async () => {
-    console.log('in all apis')
-    let {user_interests} = this.state;
+    console.log("in all apis");
+    let { user_interests } = this.state;
     console.log(user_interests);
     for (let i = 0; i < user_interests.length; i++) {
       const interest = user_interests[i];
@@ -65,7 +66,7 @@ class Home extends Component {
         let url = article.url;
         let title = article.title;
         let subtitle = article.abstract;
-        let img_src = "/home/bigbang/news-stuff/src/assests/Missing.jpg";
+        let img_src = missingImage;
         if (article.multimedia.length > 0) {
           img_src = article.multimedia[3].url;
         }
@@ -73,7 +74,7 @@ class Home extends Component {
         articles.push({
           img_src: img_src,
           title: title,
-          subtitle: subtitle, 
+          subtitle: subtitle,
           url: url
         });
         this.setState({ articles: articles });
@@ -88,7 +89,7 @@ class Home extends Component {
           {this.state.articles.map(article => {
             return (
               <Post
-                img_src={article.img_src}
+                img_src={article.img_src || missingImage}
                 url={article.url}
                 title={article.title}
               ></Post>
