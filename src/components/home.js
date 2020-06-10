@@ -25,11 +25,10 @@ class Home extends Component {
             console.log("  User UID : " + user.uid);
           });
         }
-        console.log(user.email);
         firebase
           .firestore()
           .collection("users")
-          .doc(user.email)
+          .doc(user.uid)
           .get()
           .then(doc => {
             console.log(doc);
@@ -55,12 +54,12 @@ class Home extends Component {
       console.log(
         "https://api.nytimes.com/svc/topstories/v2/" +
           interest +
-          ".json?api-key=tdAbmOB482lwbw4drHWjHDlte0MgG5vq"
+          ".json?api-key=j8FDT46k4ts1ABgrzRuG2idqcUcVS3Bx"
       );
       let nytimes = await getApiData(
         "https://api.nytimes.com/svc/topstories/v2/" +
           interest +
-          ".json?api-key=tdAbmOB482lwbw4drHWjHDlte0MgG5vq"
+          ".json?api-key=j8FDT46k4ts1ABgrzRuG2idqcUcVS3Bx"
       );
       nytimes.results.forEach(article => {
         let url = article.url;

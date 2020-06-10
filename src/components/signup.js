@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as firebase from "firebase";
 import { ButtonToolbar } from "react-bootstrap";
-import  ChooseButton  from "./choose_buttons";
+import ChooseButton from "./choose_buttons";
 
 export default class SignUp extends Component {
   state = {
@@ -10,30 +10,44 @@ export default class SignUp extends Component {
     first_name: "",
     last_name: "",
     age: "",
-    interests:[
-      'Science','Art','Politics','Technology','Business', 'Fashion', 'Food', 'Health'
+    interests: [
+      "Science",
+      "Art",
+      "Politics",
+      "Technology",
+      "Business",
+      "Fashion",
+      "Food",
+      "Health"
     ],
-    user_interests:[]
+    user_interests: []
   };
 
-  handlePress = (e) =>{
-    
-    let {user_interests} = this.state;
+  handlePress = e => {
+    let { user_interests } = this.state;
     let value = e.target.value;
-    if(!user_interests.includes(value)){
+    if (!user_interests.includes(value)) {
       user_interests.push(value);
-      e.target.style.backgroundColor = 'red';
+      e.target.style.backgroundColor = "red";
     }
     this.setState({
-      user_interests:user_interests
+      user_interests: user_interests
     });
-    console.log(user_interests)
-  }
+    console.log(user_interests);
+  };
 
   signUpUser = () => {
     alert("in signupuser");
     if (this.state.password.length > 7 && this.state.email !== "") {
-      let { email, password, first_name, last_name, age , user_interests } = this.state;
+      let {
+        email,
+        password,
+        first_name,
+        last_name,
+        age,
+        user_interests
+      } = this.state;
+      
       firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
@@ -45,22 +59,20 @@ export default class SignUp extends Component {
           // ...
         })
         .then(function(res) {
-          
           const db = firebase.firestore();
-          console.log("email",typeof(email));
+          console.log(res.user.uid)
           alert("in then");
           db.collection("users")
-          .doc(res.user.uid)
+            .doc(res.user.uid)
             .set({
               first_name: first_name,
               last_name: last_name,
               age: age,
-              user_interests:user_interests
+              user_interests: user_interests
             })
             .then(function(docRef) {
               console.log("Document written with ID: ", docRef);
               this.props.history.push("/");
-
             })
             .catch(function(error) {
               console.error("Error adding document: ", error);
@@ -70,7 +82,7 @@ export default class SignUp extends Component {
   };
 
   render() {
-    let {interests} = this.state;
+    let { interests } = this.state;
     return (
       <form>
         <h3>Sign Up</h3>
@@ -132,15 +144,15 @@ export default class SignUp extends Component {
         </div>
         <div className="form-group">
           <ButtonToolbar aria-label="Toolbar with button groups">
-            {
-              interests.map((element)=>{
-                return(<ChooseButton 
+            {interests.map(element => {
+              return (
+                <ChooseButton
                   text={element}
-                   value={element.toLowerCase()}
-                    onClick={this.handlePress}>
-                    </ChooseButton>)
-              })
-            }
+                  value={element.toLowerCase()}
+                  onClick={this.handlePress}
+                ></ChooseButton>
+              );
+            })}
           </ButtonToolbar>
         </div>
 

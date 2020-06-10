@@ -6,7 +6,8 @@ import { AuthContext } from "./Auth.js";
 export default class Login extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
+    currentUser:AuthContext
   };
   login = () => {
     console.log("in login");
@@ -29,7 +30,7 @@ export default class Login extends Component {
       });
   };
   render() {
-    const { currentUser } = useContext(AuthContext);
+    const { currentUser } = this.state;
 console.log(currentUser);
     if (currentUser) {
       return <Redirect to="/" />;
